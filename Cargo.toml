@@ -1,0 +1,6 @@
+[package]
+name = "rng_struct"
+version = "0.1.0"
+authors = ["Alex Shelley <ashelley@purdue.edu>"]
+
+[dependencies]
