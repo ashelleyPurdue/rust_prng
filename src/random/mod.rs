@@ -7,12 +7,14 @@ pub trait RandGen
 
 mod rand_gen_stack_overflow
 {
+    use super::RandGen;
+    use super::hashing;
+
     pub struct RandGenStackOverflow
     {
         seed: u64,
         state: u64
     }
-
 
     impl RandGenStackOverflow
     {
