@@ -1,4 +1,5 @@
 use hashing;
+pub use self::rand_gen_stack_overflow::RandGenStackOverflow;
 
 pub trait RandGen
 {
