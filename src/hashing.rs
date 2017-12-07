@@ -1,3 +1,5 @@
+const LARGEST_U64_PRIME: u64 = 2305843009213693951;		// Equivalent to 61 straight 1's in binary
+
 pub fn stack_overflow_hash(num: u64) -> u64
 {
 	// Returns the hash of the given number
