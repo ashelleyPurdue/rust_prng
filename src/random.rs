@@ -1,25 +1,32 @@
 use hashing;
 
-pub struct RandGen
+pub trait RandGen
+{
+    fn next_u64(&mut self, max: u64) -> u64;
+}
+
+pub struct RandGenStackOverflow
 {
     seed: u64,
     state: u64
 }
 
-impl RandGen
+impl RandGenStackOverflow
 {
     // Constructor
-    pub fn new(seed: u64) -> RandGen
+    pub fn new(seed: u64) -> RandGenStackOverflow
     {
-        RandGen
+        RandGenStackOverflow
         {
             seed: seed,
             state: seed
         }
     }
+}
 
-    // Methods
-    pub fn next_u64(&mut self, max: u64) -> u64
+impl RandGen for RandGenStackOverflow
+{
+    fn next_u64(&mut self, max: u64) -> u64
     {
         let output = hashing::stack_overflow_hash(self.state);         // Hash the state for our output
         self.state = self.state.wrapping_add(output);   // Do something to the state to make

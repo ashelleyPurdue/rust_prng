@@ -2,11 +2,12 @@ mod random;
 mod hashing;
 
 use random::RandGen;
+use random::RandGenStackOverflow;
 
 fn main()
 {
     // Make a new RandGen
-    let mut rand_gen = RandGen::new(1337);
+    let mut rand_gen = RandGenStackOverflow::new(1337);
 
     // Print its frequency graph
     print_frequency_graph(&mut rand_gen, 10, 100);
