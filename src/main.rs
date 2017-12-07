@@ -1,4 +1,6 @@
 mod random;
+mod hashing;
+
 use random::RandGen;
 
 fn main()
