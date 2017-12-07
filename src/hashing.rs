@@ -22,10 +22,10 @@ pub fn mod_exp_hash(num: u64) -> u64
 	// easily undone.
 	// Unfortunately, it has a complexity of O(ln(n)), which sucks.
 
-	const base: u64 = 5009424631521124603;	// A huge randomly-chose prime.
+	const BASE: u64 = 5009424631521124603;	// A huge randomly-chose prime.
 											// Insert xkcd "random" comic here
 	
-	return mod_exp(base, num, LARGEST_U64_PRIME);
+	return mod_exp(BASE, num, LARGEST_U64_PRIME);
 }
 
 fn mod_exp(base: u64, exp: u64, modulo: u64) -> u64
