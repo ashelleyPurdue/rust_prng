@@ -2,14 +2,19 @@ mod random;
 mod hashing;
 
 use random::RandGen;
-use random::RandGenStackOverflow;
 
 fn main()
 {
-    // Make a new RandGen
-    let mut rand_gen = RandGenStackOverflow::new(1337);
+    // Test stack overflow method
+    println!("===stack overflow hash method===");
 
-    // Print its frequency graph
+    let mut rand_gen = random::RandGenStackOverflow::new(1337);
+    print_frequency_graph(&mut rand_gen, 10, 100);
+
+    // Test modular exponentiation method
+    println!("===modular exponentiation hash method===");
+    
+    let mut rand_gen = random::RandGenModExp::new(1337);
     print_frequency_graph(&mut rand_gen, 10, 100);
 }
 
