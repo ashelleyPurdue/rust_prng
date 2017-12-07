@@ -14,3 +14,40 @@ pub fn stack_overflow_hash(num: u64) -> u64
 
 	return h;
 }
+
+pub fn mod_exp_hash(num: u64) -> u64
+{
+	// Returns a hash computed via modular exponentiation.
+	// This is better than the stack overflow one, because it can't be
+	// easily undone.
+	// Unfortunately, it has a complexity of O(ln(n)), which sucks.
+
+	const base: u64 = 5009424631521124603;	// A huge randomly-chose prime.
+											// Insert xkcd "random" comic here
+	
+	return mod_exp(base, num, LARGEST_U64_PRIME);
+}
+
+fn mod_exp(base: u64, exp: u64, modulo: u64) -> u64
+{
+	// Returns base raised to the power of exp (mod modulo)
+	// Algorithm pilfered from wikipedia:
+	// https://en.wikipedia.org/wiki/Modular_exponentiation
+
+	let mut result: u64 = 1;	
+	let mut base: u64 = base % modulo;	// <3 variable shadowing :)
+	let mut exp: u64 = exp;
+
+	while exp > 0
+	{
+		if exp % 2 == 1
+		{
+			result = result.wrapping_mul(base) % modulo;
+		}
+
+		exp = exp >> 1;
+		base = base.wrapping_mul(base) % modulo;
+	}
+
+	return result;
+}
